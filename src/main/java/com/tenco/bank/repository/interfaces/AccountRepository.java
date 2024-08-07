@@ -2,11 +2,12 @@ package com.tenco.bank.repository.interfaces;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.tenco.bank.repository.model.Account;
 import com.tenco.bank.repository.model.User;
-
+@Mapper
 public interface AccountRepository {
 	public int insert(Account account);
 	public int updateById(Account account);
