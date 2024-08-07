@@ -18,7 +18,7 @@
 		<div class="m--container">
 			<div class="jumbotron text-center m--banner-img" style="margin-bottom: 0">
 				<h1>My Bank</h1>
-				<p>마이바이티스를 활용한 스프링 부트 앱 만들어보기</p>
+				<p>MyBatis 를 활용한 스프링 부트 앱 만들어보기</p>
 			</div>
 			<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 				<a class="navbar-brand" href="#">Navbar</a>
