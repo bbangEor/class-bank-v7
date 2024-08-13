@@ -1,7 +1,7 @@
 package com.tenco.bank.utils;
 
 public class Define {
-	public static String PRINCIPAL = "principal";
+	public static final String PRINCIPAL = "principal";
 
 	// 이미지 관련
 	public static final String UPLOAD_FILE_DIRECTORY = "C:\\work_spring\\upload/";
