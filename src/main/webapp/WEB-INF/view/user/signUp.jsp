@@ -8,7 +8,7 @@
 	<h2>회원 가입</h2>
 	<h5>Bank App에 오신걸 환영합니다</h5>
 
-	<form action="/user/sign-up" method="post">  	<!-- << 절대 경로 -->
+	<form action="/user/sign-up" method="post" enctype="multipart/form-data">  	<!-- << 절대 경로 -->
 		<div class="form-group">
 			<label for="username">username:</label> <input type="text" class="form-control" placeholder="Enter username" id="username" name="username">
 		</div>
@@ -18,7 +18,14 @@
 		<div class="form-group">
 			<label for="fullname">fullname:</label> <input type="text" class="form-control" placeholder="Enter fullname" id="fullname" name="fullname">
 		</div>
-		<button type="submit" class="btn btn-primary">회원가입</button>
+		
+		 <div class="custom-file">
+    	<input type="file" class="custom-file-input" id="customFile" name ="mFile">
+    	<label class="custom-file-label" for="customFile">Choose file</label>
+  		</div>
+		<div class ="d-flex justify-content-end">
+		<button type="submit" class="btn btn-primary mt-md-4">회원가입</button>
+		</div>
 	</form>
 
 
@@ -27,7 +34,13 @@
 </div>
 </div>
 <!-- end of content.jsp(xxx.jsp)   -->
-
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  let fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+}); 
+</script><!-- 파일 추가를 하면 파일이 추가되는것을 보여주는 기능  -->
 <!-- footer.jsp  -->
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
