@@ -18,14 +18,14 @@ public class GlobalControllerAdvice {
  *  모든예외 클래스를 알수 없으나 , 로깅으로 확인할수 있도록 설정해준다.
  *  로깅처리 - 동기적 방식 (System.out.println) , @slf4j ( 비동기 처리됨 )
  */
-	// 예외처리가 일어나면 호출되는 메서드
-	@ExceptionHandler(Exception.class) // 어노테이션 - 예외처리가 일어나면 캐치해오는 기능 
-	public void exception(Exception e) {
-		System.out.println("-------------------");
-		System.out.println(e.getClass().getName()); 
-		System.out.println(e.getMessage()); 
-		System.out.println("-------------------");
-	}
+//	// 예외처리가 일어나면 호출되는 메서드
+//	@ExceptionHandler(Exception.class) // 어노테이션 - 예외처리가 일어나면 캐치해오는 기능 
+//	public void exception(Exception e) {
+//		System.out.println("-------------------");
+//		System.out.println(e.getClass().getName()); 
+//		System.out.println(e.getMessage()); 
+//		System.out.println("-------------------");
+//	}
 	/**
 	 * Data 로 예외를 내려주는 방법 
 	 * @ResponseBody 활용

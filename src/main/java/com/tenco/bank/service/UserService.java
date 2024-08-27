@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -39,7 +40,9 @@ public class UserService {
 //      this.userRepository = userRepository;
 //   }
    
-   
+// 초기 파라메터 가져오는 방법 
+   @Value("${file.upload-dir}")
+   private String uploadDir;
    
    /**
     * 회원 등록 서비스 기능
@@ -50,12 +53,9 @@ public class UserService {
    public void createUser(SignUpDTO dto) { // 회원가입 처리 (CRUD 기반 네이밍)
       
       int result = 0;
-      
-      System.out.println("-------------------------------");
-      System.out.println(dto.getMFile().getOriginalFilename());
-      System.out.println("-------------------------------");
-      
-      if(!dto.getMFile().isEmpty()) {
+      System.out.println("2222222222");
+      if(dto.getMFile() != null && !dto.getMFile().isEmpty())  {
+    	  System.out.println("3333333333");
          // 파일 업로드 로직 구현
          String[] filenames = uploadFile(dto.getMFile());
          
@@ -122,9 +122,10 @@ public class UserService {
     	  if(mFile.getSize() > Define.MAX_FILE_SIZE) {
     		  throw new DataDeliveryException("파일 크기는 20MB 이상 업로드 할 수 없습니다.", HttpStatus.BAD_REQUEST);
     	  }
-    	  
-    	  String saveDirectory = Define.UPLOAD_FILE_DIRECTORY;
-    	  File directory = new File(saveDirectory);
+    	  // 리눅스 또는 Mac os 에 맞춰서 절대 경로가 생성을 시킬수 있다.
+    	  String saveDirectory =uploadDir;
+    	  System.out.println("saveDirectory : " + saveDirectory);
+    	  File directory = new File(uploadDir);
     	  if(!directory.exists()) {
     		  directory.mkdirs(); //mkdir() < 마지막 하위버전만 만들기 mkdirs() < 전부다 만들기 
     	  }
@@ -146,6 +147,9 @@ public class UserService {
     	  return new String[] {mFile.getOriginalFilename(),uploadFileName};
       }
       
+      public User searchUsername(String username) {
+    	  return userRepository.findByUsername(username);
+      }
       
       
 }
